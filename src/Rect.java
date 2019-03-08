@@ -1,3 +1,9 @@
+/**
+ * Rect.java
+ * @version 1.0
+ * @author Jack Maloney
+ */
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -55,7 +61,7 @@ public class Rect extends ClosedShape {
      *
      * @return Converts the rectangle to a string
      */
-    public String roString(){
+    public String toString(){
         String result = "This is a rectangle\n";
         result += super.toString();
         result += "Its width is " + this.width + " and its height is " + this.height + "\n";

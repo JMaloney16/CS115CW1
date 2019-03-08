@@ -65,6 +65,7 @@ public class Oval extends ClosedShape {
  	/**
  	 * @return The width of the oval.
  	 */
+ 	@Override
  	public int getWidth() {
 		return width;
 	}
@@ -72,6 +73,7 @@ public class Oval extends ClosedShape {
  	/**
  	 * @return The height of the oval.
  	 */
+ 	@Override
  	public int getHeight() {
 		return height;
 	}

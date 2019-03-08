@@ -3,7 +3,7 @@
  * This class reads a shape file.  For the format of this shape file, see the assignment description.
  * Also, please see the shape files ExampleShapes.txt, ExampleShapesStill.txt, and TwoRedCircles.txt
  *
- * @author you
+ * @author Jack Maloney
  *
  */
 
@@ -57,6 +57,11 @@ public class ReadShapeFile {
 		return shapeQueue;
 	}
 
+    /**
+     * Method to convert a string format circle to a Circle object
+     * @param line Scanner with string input stream
+     * @return Circle object
+     */
 	private static Circle createCircle(Scanner line){
 		int px = line.nextInt();
 		int py = line.nextInt();
@@ -73,6 +78,12 @@ public class ReadShapeFile {
 				+ " " + Color.rgb(r,g,b) + " " + filled);
 		return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r,g,b), filled);
 	}
+
+    /**
+     * Method to convert a string format oval to a Oval object
+     * @param line Scanner with string input stream
+     * @return Oval object
+     */
 	private static Oval createOval(Scanner line){
 		int px = line.nextInt();
 		int py = line.nextInt();
@@ -91,6 +102,11 @@ public class ReadShapeFile {
 		return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled);
 	}
 
+    /**
+     * Method to convert a string format square to a Square object
+     * @param line Scanner with string input stream
+     * @return Square object
+     */
 	private static Square createSquare(Scanner line){
 		int px = line.nextInt();
 		int py = line.nextInt();
@@ -106,6 +122,11 @@ public class ReadShapeFile {
 		return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r,g,b), filled);
 	}
 
+    /**
+     * Method to convert a string format rectange to a Rect object
+     * @param line Scanner with string input stream
+     * @return Rect object
+     */
 	private static Rect createRect(Scanner line){
 		int px = line.nextInt();
 		int py = line.nextInt();

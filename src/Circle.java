@@ -66,13 +66,15 @@ public class Circle extends ClosedShape {
     /**
      * @return The width of the circle
      */
- 	public int getWidth() {
+ 	@Override
+    public int getWidth() {
 		return diameter;
 	}
 
  	/**
  	 * @return The height of the circle
  	 */
+ 	@Override
  	public int getHeight() {
 		return diameter;
 	}

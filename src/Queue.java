@@ -14,13 +14,16 @@ import java.util.NoSuchElementException;
 public class Queue<T> {
 
 	//TODO:  You need some data to store the queue.  Put the attributes here.
-
+	private QueueElement<T> head;
+	private QueueElement<T> tail;
 	
 	/**
 	 * Constructs an empty Queue.
 	 */
 	public Queue () {
 	    //TODO: Write the Queue constructor
+		this.head = null;
+		this.tail = null;
 	}
 	
 	/**
@@ -28,7 +31,7 @@ public class Queue<T> {
 	 */
 	public boolean isEmpty () {
 	    //TODO:  Needs to return true when empty and false otherwise
-	    return true;
+		return (head == null) && (tail == null);
 	}
 	
 	
@@ -36,7 +39,11 @@ public class Queue<T> {
 	 * Returns the element at the head of the queue
 	 */
 	public T peek () throws NoSuchElementException {
-		return null; //DELETE AND CHANGE TO SOMETHING SENSIBLE
+		if (this.isEmpty()){
+			throw new NoSuchElementException("Queue is empty!");
+		}else{
+			return this.head.getElement();
+		}
 	}
 	
 	/**
@@ -44,6 +51,14 @@ public class Queue<T> {
 	 */
 	public void dequeue () throws NoSuchElementException {
 	    //Dequeue code is neede here
+		if(this.isEmpty()){
+			throw new NoSuchElementException("Queue is empty!");
+		}else {
+			this.head = head.getNext();
+			if (this.head == null){
+				this.tail = null;
+			}
+		}
 	}
 	
 	/**
@@ -51,6 +66,14 @@ public class Queue<T> {
 	 */
 	public void enqueue (T element) {
 	    //Enqueue code is needed here
+		QueueElement<T> newNode = new QueueElement<T>(element, null);
+		if (this.head == null){
+			this.head = newNode;
+			this.tail = newNode;
+		}else{
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+		}
 	}
 	
 	/**
@@ -58,5 +81,11 @@ public class Queue<T> {
 	 */
 	public void print () {
 	    //Code to print the code is needed here
+
+		QueueElement<T> current = this.head;
+		while (current != null){
+			System.out.println(current.getElement());
+			current = current.getNext();
+		}
 	}
 }

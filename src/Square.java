@@ -1,5 +1,18 @@
+/**
+ * Square.java
+ * @version 1.0
+ * @author Jack Maloney
+ */
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
+/**
+ * Square is a shape that can be drawn to the screen, either
+ * filled with colour or opaque.
+ * Its position is determined by the upper left corner of
+ * the Square's bounding rectangle.
+ */
 
 public class Square extends ClosedShape {
     // The length of one side of the square
@@ -45,7 +58,14 @@ public class Square extends ClosedShape {
         result += "Its side length is " + this.side + "\n";
         return result;
     }
-
+    @Override
+    public int getHeight(){
+        return side;
+    }
+    @Override
+    public int getWidth(){
+        return side;
+    }
     /**
      * Draw the square.
      * @param g The graphics object of the drawable component.
