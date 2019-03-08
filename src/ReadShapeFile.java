@@ -8,6 +8,8 @@
  */
 
 import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcType;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -46,6 +48,9 @@ public class ReadShapeFile {
 					break;
 				case "rect":
 					shapeQueue.enqueue(createRect(line));
+					break;
+				case "arc":
+					shapeQueue.enqueue(createArc(line));
 					break;
 				default:
 					System.out.println("Not a correct shape format!");
@@ -122,11 +127,11 @@ public class ReadShapeFile {
 		return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r,g,b), filled);
 	}
 
-    /**
-     * Method to convert a string format rectange to a Rect object
-     * @param line Scanner with string input stream
-     * @return Rect object
-     */
+	/**
+	 * Method to convert a string format rectangle to a Rect object
+	 * @param line Scanner with string input stream
+	 * @return Rect object
+	 */
 	private static Rect createRect(Scanner line){
 		int px = line.nextInt();
 		int py = line.nextInt();
@@ -143,6 +148,29 @@ public class ReadShapeFile {
 		return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled);
 	}
 
+	/**
+	 * Method to convert a string format arc to an Arc object
+	 * @param line Scanner with string input stream
+	 * @return Arc object
+	 */
+	private static Arc createArc(Scanner line){
+		int px = line.nextInt();
+		int py = line.nextInt();
+		int vx = line.nextInt();
+		int vy = line.nextInt();
+		boolean filled = line.nextBoolean();
+		int width = line.nextInt();
+		int height = line.nextInt();
+		int startAngle = line.nextInt();
+		int arcExtent = line.nextInt();
+		String closure = line.next().toUpperCase();
+		int r = line.nextInt();
+		int g = line.nextInt();
+		int b = line.nextInt();
+		int insertionTime = line.nextInt();
+		line.close();
+		return new Arc(insertionTime, px, py, vx, vy, width, height, startAngle, arcExtent, closure, Color.rgb(r, g, b), filled);
+	}
 	/**
 	 * Method to read the file and return a queue of shapes from this file. The
 	 * program should handle the file not found exception here and shut down the
