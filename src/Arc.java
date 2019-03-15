@@ -45,6 +45,11 @@ public class Arc extends ClosedShape {
         this.closure = ArcType.valueOf(closure);
     }
 
+    public Arc(int insertionTime, int x, int y, int vx, int vy, int width, int height, int startAngle, int arcExtent,
+               String closure, Color colour, boolean isFilled, double pulseSize){
+        this(insertionTime, x, y, vx, vy, width, height, startAngle, arcExtent, closure, colour, isFilled);
+        this.pulseSize = pulseSize;
+    }
     /**
      * Method to convert an arc to a string
      */

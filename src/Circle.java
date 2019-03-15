@@ -38,7 +38,11 @@ public class Circle extends ClosedShape {
     	this.diameter = diameter;
     
     }
-    
+
+	public Circle (int insertionTime, int x, int y, int vx, int vy, int diameter, Color colour, boolean isFilled, double pulseSize) {
+		this(insertionTime, x, y, vx, vy, diameter, colour, isFilled);
+		this.pulseSize = pulseSize;
+	}
     /**
      * Method to convert a circle to a string.
      */
@@ -50,7 +54,7 @@ public class Circle extends ClosedShape {
     }
     
     /**
-     * @param Resets the diameter.
+     * @param diameter Resets the diameter.
      */
     public void setDiameter (int diameter) {
     	this.diameter = diameter;
@@ -70,7 +74,10 @@ public class Circle extends ClosedShape {
     public int getWidth() {
 		return diameter;
 	}
-
+	@Override
+	public void setWidth(int diameter){
+ 		this.diameter = diameter;
+	}
  	/**
  	 * @return The height of the circle
  	 */
@@ -78,7 +85,10 @@ public class Circle extends ClosedShape {
  	public int getHeight() {
 		return diameter;
 	}
-    
+    @Override
+	public void setHeight(int diameter){
+ 		this.diameter = diameter;
+	}
     /**
      * Draw the circle on the screen.
      * @param g The graphics object of the scene component.

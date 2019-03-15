@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 
 public class Queue<T> {
 
-	//TODO:  You need some data to store the queue.  Put the attributes here.
+	//TODO:
 	private QueueElement<T> head;
 	private QueueElement<T> tail;
 	
@@ -21,7 +21,7 @@ public class Queue<T> {
 	 * Constructs an empty Queue.
 	 */
 	public Queue () {
-	    //TODO: Write the Queue constructor
+	    //TODO:
 		this.head = null;
 		this.tail = null;
 	}
@@ -30,7 +30,7 @@ public class Queue<T> {
 	 * Returns true if the queue is empty
 	 */
 	public boolean isEmpty () {
-	    //TODO:  Needs to return true when empty and false otherwise
+	    //TODO:
 		return (head == null) && (tail == null);
 	}
 	
@@ -83,6 +83,9 @@ public class Queue<T> {
 	    //Code to print the code is needed here
 
 		QueueElement<T> current = this.head;
+		if (current == null){
+			System.out.println("The queue is empty.");
+		}
 		while (current != null){
 			System.out.println(current.getElement());
 			current = current.getNext();

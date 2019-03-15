@@ -55,7 +55,17 @@ public class ClosedShape {
 	 * Encodes the insertion time into the scene
 	 */
 	private int insertionTime;
-	
+
+	protected double pulseSize = 1;
+
+	protected boolean enlargement = false;
+
+	protected double pulseWidth;
+	protected double pulseHeight;
+
+	protected int originalWidth;
+	protected int originalHeight;
+
 	/**
 	 * Creates a closed shape object.
 	 * @param x The x position.
@@ -63,7 +73,7 @@ public class ClosedShape {
 	 * @param colour The line or fill colour.
 	 * @param isFilled True if the shape is filled, false if not.
 	 */
-	protected ClosedShape (int insertionTime, int x, int y, int vx, int vy, Color colour, boolean isFilled) {
+	protected ClosedShape (int insertionTime, int x, int y, int vx, int vy, Color colour, boolean isFilled ) {
 		this.x = x;
 		this.y = y;
 		this.xVec = vx;
@@ -72,7 +82,13 @@ public class ClosedShape {
 		this.isFilled = isFilled;
 		this.insertionTime = insertionTime;
 	}
-	
+
+	protected ClosedShape (int insertionTime, int x, int y, int vx, int vy, Color colour, boolean isFilled,
+                           double pulseSize ){
+	    this(insertionTime, x, y, vx, vy, colour, isFilled);
+	    this.pulseSize = pulseSize;
+    }
+
 	/**
 	 * The method returns a string suitable for printing.
 	 * @return string to print out shape.
@@ -138,7 +154,7 @@ public class ClosedShape {
 	 public void unsetFilled () {
 	 	isFilled = false;
 	 }
-	 
+
 	 /**
 	  * Sets the insertion time.
 	  */
@@ -173,14 +189,14 @@ public class ClosedShape {
 	 public boolean isFilled() {
 	 	return isFilled;
 	 }
-	 
+
 	 /**
 	  * @return the insertion time.
 	  */
 	 public int getInsertionTime () {
 		 return insertionTime;
 	 }
-    
+
 	 /**
 	  * Puts the shape back in bounds in X
 	  */
@@ -190,7 +206,7 @@ public class ClosedShape {
 	 		x = (int) (winX - Math.ceil (this.getWidth ()));
 	 	}
 	 }//end inBoundsX;
-    
+
 	 /**
 	  * Puts the shape back in bounds
 	  */
@@ -256,6 +272,10 @@ public class ClosedShape {
 	 	return 1;
 	 }
 
+	 public void setWidth(int newWidth){
+         System.out.println("Must be overwritten!");
+     }
+
 	 /**
 	  * Get the width of the current component
 	  */
@@ -264,4 +284,56 @@ public class ClosedShape {
 	 	System.out.println ("Don't modify this method.");
 	 	return 1;
 	 }
+
+	 public void setHeight(int newHeight){
+         System.out.println("Must be overwritten!");
+     }
+
+	 public int getOriginalWidth() {
+		return originalWidth;
+	 }
+
+	 public void setOriginalWidth(int originalWidth) {
+		this.originalWidth = originalWidth;
+	 }
+
+	 public int getOriginalHeight() {
+		return originalHeight;
+	 }
+
+	 public void setOriginalHeight(int originalHeight) {
+		this.originalHeight = originalHeight;
+     }
+
+    public boolean isEnlargement() {
+        return enlargement;
+    }
+
+    public void setEnlargement(boolean enlargement) {
+        this.enlargement = enlargement;
+    }
+
+    public double getPulseSize() {
+        return pulseSize;
+    }
+
+    public void setPulseSize(double pulseSize) {
+        this.pulseSize = pulseSize;
+    }
+
+    public double getPulseWidth() {
+        return pulseWidth;
+    }
+
+    public void setPulseWidth(double pulseWidth) {
+        this.pulseWidth = pulseWidth;
+    }
+
+    public double getPulseHeight() {
+        return pulseHeight;
+    }
+
+    public void setPulseHeight(double pulseHeight) {
+        this.pulseHeight = pulseHeight;
+    }
 }

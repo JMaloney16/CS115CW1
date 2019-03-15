@@ -34,6 +34,11 @@ public class Square extends ClosedShape {
         this.side = side;
     }
 
+    public Square(int insertionTime, int x, int y, int vx, int vy, int side, Color colour, boolean isFilled,
+                  double pulseSize) {
+        this(insertionTime, x, y, vx, vy, side, colour, isFilled);
+        this.pulseSize = pulseSize;
+    }
     /**
      * @return The length of the sides of the square
      */
@@ -65,6 +70,16 @@ public class Square extends ClosedShape {
     @Override
     public int getWidth(){
         return side;
+    }
+
+    @Override
+    public void setHeight(int height){
+        this.side = height;
+    }
+
+    @Override
+    public void setWidth(int width){
+        this.side = width;
     }
     /**
      * Draw the square.

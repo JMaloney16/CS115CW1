@@ -67,7 +67,7 @@ public class ReadShapeFile {
      * @param line Scanner with string input stream
      * @return Circle object
      */
-	private static Circle createCircle(Scanner line){
+	private static Circle createCircle(Scanner line) {
 		int px = line.nextInt();
 		int py = line.nextInt();
 		int vx = line.nextInt();
@@ -78,10 +78,14 @@ public class ReadShapeFile {
 		int g = line.nextInt();
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
-		line.close();
-		System.out.println(insertionTime + " " + " " + px +  " " + py + " " + vx + " " + vy + " " + diameter
-				+ " " + Color.rgb(r,g,b) + " " + filled);
-		return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r,g,b), filled);
+		if (line.hasNext()) {
+			int pulseSize = line.nextInt();
+			line.close();
+			return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r, g, b), filled, pulseSize);
+		} else {
+			line.close();
+			return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r, g, b), filled);
+		}
 	}
 
     /**
@@ -101,10 +105,14 @@ public class ReadShapeFile {
 		int g = line.nextInt();
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
-		line.close();
-		//		System.out.println(insertionTime + " " + " " + px +  " " + py + " " + vx + " " + vy + " " + width + " " +
-//				height + " " + Color.rgb(r,g,b) + " " + filled);
-		return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled);
+		if (line.hasNext()){
+			int pulseSize = line.nextInt();
+			line.close();
+			return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize);
+		}else {
+			line.close();
+			return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r, g, b), filled);
+		}
 	}
 
     /**
@@ -123,8 +131,14 @@ public class ReadShapeFile {
 		int g = line.nextInt();
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
-		line.close();
-		return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r,g,b), filled);
+		if (line.hasNext()){
+			int pulseSize = line.nextInt();
+			line.close();
+			return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r,g,b), filled, pulseSize);
+		}else {
+			line.close();
+			return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r, g, b), filled);
+		}
 	}
 
 	/**
@@ -144,8 +158,14 @@ public class ReadShapeFile {
 		int g = line.nextInt();
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
-		line.close();
-		return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled);
+		if (line.hasNext()){
+			int pulseSize = line.nextInt();
+			line.close();
+			return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize);
+		}else {
+			line.close();
+			return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r, g, b), filled);
+		}
 	}
 
 	/**
@@ -168,8 +188,16 @@ public class ReadShapeFile {
 		int g = line.nextInt();
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
-		line.close();
-		return new Arc(insertionTime, px, py, vx, vy, width, height, startAngle, arcExtent, closure, Color.rgb(r, g, b), filled);
+		if (line.hasNext()){
+			int pulseSize = line.nextInt();
+			line.close();
+			return new Arc(insertionTime, px, py, vx, vy, width, height, startAngle, arcExtent, closure,
+					Color.rgb(r, g, b), filled, pulseSize);
+		} else {
+			line.close();
+			return new Arc(insertionTime, px, py, vx, vy, width, height, startAngle, arcExtent, closure,
+					Color.rgb(r, g, b), filled);
+		}
 	}
 	/**
 	 * Method to read the file and return a queue of shapes from this file. The

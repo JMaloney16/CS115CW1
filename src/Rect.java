@@ -27,6 +27,11 @@ public class Rect extends ClosedShape {
         this.height = height;
     }
 
+    public Rect(int insertionTime, int x, int y, int vx, int vy, int width, int height, Color colour, boolean isFilled,
+                double pulseSize){
+        this(insertionTime, x ,y ,vx, vy, width, height, colour, isFilled);
+        this.pulseSize = pulseSize;
+    }
     /**
      * @return The width of the rectangle
      */
