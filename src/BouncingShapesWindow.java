@@ -1,14 +1,3 @@
-
-/*TODO: Calculate the size of current shape
-Calculate the pulsing size
-If shape is meant to shrink:
-	subtract (1?) from the size
-	if shape has reached smallest size - switch to increasing every tick
-Else:
-	same but increase
-*/
-
-
 import java.util.ArrayList;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
@@ -73,10 +62,11 @@ public class BouncingShapesWindow {
         //add shapes if needed
         ClosedShape current = shapesToAdd.peek ();
         while (!shapesToAdd.isEmpty () && (current.getInsertionTime() <= currentTime*ANIMATION_DELAY)) {
-            current.setOriginalHeight(current.getHeight());
+            current.setOriginalHeight(current.getHeight()); // Save the original size to revert back to after pulsing
             current.setOriginalWidth(current.getWidth());
-            current.setPulseHeight(current.getOriginalHeight()*current.getPulseSize());
-            current.setPulseWidth(current.getOriginalWidth()*current.getPulseSize());
+            //The pulse size is the original size * the pulseSize rounded to the nearest int
+            current.setPulseHeight((int) Math.round(current.getOriginalHeight()*current.getPulseSize()));
+            current.setPulseWidth((int) Math.round(current.getOriginalWidth()*current.getPulseSize()));
             activeShapes.add(current);
             shapesToAdd.dequeue();
             if (!shapesToAdd.isEmpty ()) {
@@ -130,26 +120,43 @@ public class BouncingShapesWindow {
         }
     }
 
+    /**
+     * Changes the size of each shape depending on it's current size and pulsing size
+     */
     public void pulseShapes(){
         final int RESIZE_SPEED = 1;
         for (ClosedShape s : activeShapes){
-            if (s.isEnlargement()){
-                s.setHeight(s.getHeight() + RESIZE_SPEED );
-                s.setWidth(s.getWidth() + RESIZE_SPEED);
-                if (s.getHeight() <= s.getPulseHeight()){
-                    s.setEnlargement(true);
+            if (s.getPulseSize() >= 1) { // If the shape increases in size from it's starting size
+                if (s.isEnlargement()){ // If the shape is currently increasing in size
+                    s.setHeight(s.getHeight() + RESIZE_SPEED );
+                    s.setWidth(s.getWidth() + RESIZE_SPEED);
+                    // Check whether the shape has reached the pulse size, if it has start shrinking
+                    if (s.getHeight() > s.getPulseHeight()){
+                        s.setEnlargement(false);
+                    }
                 }else{
-                    s.setEnlargement(false);
+                    s.setHeight(s.getHeight() - RESIZE_SPEED);
+                    s.setWidth(s.getWidth() - RESIZE_SPEED);
+                    if (s.getHeight() <= s.getOriginalHeight()){
+                        s.setEnlargement(true);
+                    }
                 }
-            }else{
-                s.setHeight(s.getHeight() - RESIZE_SPEED);
-                s.setWidth(s.getWidth() - RESIZE_SPEED);
-                if (s.getHeight() <= s.getOriginalHeight()){
-                    s.setEnlargement(true);
+            } else { // If the shape decreases in size from it's starting size
+                if (s.isEnlargement()){
+                    s.setHeight(s.getHeight() - RESIZE_SPEED );
+                    s.setWidth(s.getWidth() - RESIZE_SPEED);
+                    if (s.getHeight() <= s.getPulseHeight()){
+                        s.setEnlargement(false);
+                    }
                 }else{
-                    s.setEnlargement(false);
+                    s.setHeight(s.getHeight() + RESIZE_SPEED);
+                    s.setWidth(s.getWidth() + RESIZE_SPEED);
+                    if (s.getHeight() >= s.getOriginalHeight()){
+                        s.setEnlargement(true);
+                    }
                 }
             }
+
         }
     }
 

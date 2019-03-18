@@ -15,11 +15,6 @@ import java.util.Scanner;
 
 public class ReadShapeFile {
 
-	// TODO: You will likely need to write four methods here. One method to
-	// construct each shape
-	// given the Scanner passed as a parameter. I would suggest static
-	// methods in this case.
-
 	/**
 	 * Reads the data file used by the program and returns the constructed queue
 	 * 
@@ -53,7 +48,7 @@ public class ReadShapeFile {
 					shapeQueue.enqueue(createArc(line));
 					break;
 				default:
-					System.out.println("Not a correct shape format!");
+					System.out.println("Not a correct shape format!: " + shapeType);
 			}
 
 		}
@@ -62,6 +57,8 @@ public class ReadShapeFile {
 		return shapeQueue;
 	}
 
+	/*The shape methods read the lines of the file saving each attribute to the corresponding variable and then return
+	a new object of the shape */
     /**
      * Method to convert a string format circle to a Circle object
      * @param line Scanner with string input stream
@@ -78,8 +75,8 @@ public class ReadShapeFile {
 		int g = line.nextInt();
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
-		if (line.hasNext()) {
-			int pulseSize = line.nextInt();
+		if (line.hasNext()) { //If the shape pulses
+			double pulseSize = line.nextDouble();
 			line.close();
 			return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r, g, b), filled, pulseSize);
 		} else {
@@ -106,7 +103,7 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
-			int pulseSize = line.nextInt();
+			double pulseSize = line.nextDouble();
 			line.close();
 			return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize);
 		}else {
@@ -132,7 +129,7 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
-			int pulseSize = line.nextInt();
+			double pulseSize = line.nextDouble();
 			line.close();
 			return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r,g,b), filled, pulseSize);
 		}else {
@@ -159,7 +156,7 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
-			int pulseSize = line.nextInt();
+			double pulseSize = line.nextDouble();
 			line.close();
 			return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize);
 		}else {
@@ -189,7 +186,7 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
-			int pulseSize = line.nextInt();
+			double pulseSize = line.nextDouble();
 			line.close();
 			return new Arc(insertionTime, px, py, vx, vy, width, height, startAngle, arcExtent, closure,
 					Color.rgb(r, g, b), filled, pulseSize);

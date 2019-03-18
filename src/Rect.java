@@ -13,7 +13,6 @@ public class Rect extends ClosedShape {
     /**
      * Creates a closed shape object.
      *
-     * @param insertionTime
      * @param x             The x position.
      * @param y             the y position.
      * @param vx            The display component's x velocity.

@@ -17,7 +17,7 @@ import java.util.Enumeration;
  */
 public class Arc extends ClosedShape {
 
-    private int width, height, startAngle, arcExtent;
+    private int width, height, startAngle, arcExtent; //Start angle and extent of the arc are in degrees
     private ArcType closure;
 
     /**
@@ -42,7 +42,13 @@ public class Arc extends ClosedShape {
         this.height = height;
         this.startAngle = startAngle;
         this.arcExtent = arcExtent;
-        this.closure = ArcType.valueOf(closure);
+        try {
+            this.closure = ArcType.valueOf(closure);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            System.out.println(closure + " is not a valid ArcType! The shape has been set to ROUND");
+            this.closure = ArcType.ROUND;
+        }
     }
 
     public Arc(int insertionTime, int x, int y, int vx, int vy, int width, int height, int startAngle, int arcExtent,
