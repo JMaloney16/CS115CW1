@@ -16,7 +16,7 @@ import java.util.Enumeration;
  * Its position is determined by the upper left corner of the oval's bounding rectangle
  */
 public class Arc extends ClosedShape {
-
+    // This shape type does not bounce properly, see the Image class for my step 4 solution
     private int width, height, startAngle, arcExtent; //Start angle and extent of the arc are in degrees
     private ArcType closure;
 
@@ -56,9 +56,10 @@ public class Arc extends ClosedShape {
      * @param pulseSize The multiplier to calculate the size to pulse to
      */
     public Arc(int insertionTime, int x, int y, int vx, int vy, int width, int height, int startAngle, int arcExtent,
-               String closure, Color colour, boolean isFilled, double pulseSize){
+               String closure, Color colour, boolean isFilled, double pulseSize, boolean doesPulse){
         this(insertionTime, x, y, vx, vy, width, height, startAngle, arcExtent, closure, colour, isFilled);
         this.pulseSize = pulseSize;
+        this.doesPulse = doesPulse;
     }
     /**
      * Method to convert an arc to a string

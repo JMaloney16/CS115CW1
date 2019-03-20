@@ -57,7 +57,7 @@ public class ClosedShape {
 	private int insertionTime;
 
 	protected double pulseSize = 1;
-
+	protected boolean doesPulse = false;
 	protected boolean enlargement = false;
 
 	protected double pulseWidth;
@@ -84,8 +84,9 @@ public class ClosedShape {
 	}
 
 	protected ClosedShape (int insertionTime, int x, int y, int vx, int vy, Color colour, boolean isFilled,
-                           double pulseSize ){
+                           double pulseSize, boolean doesPulse ){
 	    this(insertionTime, x, y, vx, vy, colour, isFilled);
+	    this.doesPulse = doesPulse;
 	    this.pulseSize = pulseSize;
     }
 
@@ -196,6 +197,7 @@ public class ClosedShape {
 	 public int getInsertionTime () {
 		 return insertionTime;
 	 }
+
 
 	 /**
 	  * Puts the shape back in bounds in X
@@ -336,4 +338,12 @@ public class ClosedShape {
     public void setPulseHeight(double pulseHeight) {
         this.pulseHeight = pulseHeight;
     }
+
+	public boolean isDoesPulse() {
+		return doesPulse;
+	}
+
+	public void setDoesPulse(boolean doesPulse) {
+		this.doesPulse = doesPulse;
+	}
 }

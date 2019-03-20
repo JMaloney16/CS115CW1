@@ -42,9 +42,11 @@ public class Circle extends ClosedShape {
 	 *
 	 * @param pulseSize The multiplier to calculate the size to pulse to
 	 */
-	public Circle (int insertionTime, int x, int y, int vx, int vy, int diameter, Color colour, boolean isFilled, double pulseSize) {
+	public Circle (int insertionTime, int x, int y, int vx, int vy, int diameter, Color colour, boolean isFilled,
+				   double pulseSize, boolean doesPulse) {
 		this(insertionTime, x, y, vx, vy, diameter, colour, isFilled);
 		this.pulseSize = pulseSize;
+		this.doesPulse = doesPulse;
 	}
     /**
      * Method to convert a circle to a string.

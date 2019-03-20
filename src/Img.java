@@ -1,3 +1,9 @@
+/**
+ * Img.java
+ * @version 1.0
+ * @author Jack Maloney
+ */
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
@@ -33,9 +39,11 @@ public class Img extends ClosedShape {
      *
      * @param pulseSize The multiplier to calculate the size to pulse to
      */
-    public Img(int insertionTime, int x, int y, int vx, int vy, int width, int height, Image image, double pulseSize) {
+    public Img(int insertionTime, int x, int y, int vx, int vy, int width, int height, Image image,
+               double pulseSize, boolean doesPulse) {
         this(insertionTime, x, y, vx, vy, width, height, image);
         this.pulseSize = pulseSize;
+        this.doesPulse = doesPulse;
     }
 
     /**

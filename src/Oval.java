@@ -43,9 +43,10 @@ public class Oval extends ClosedShape {
 	 * @param pulseSize The multiplier to calculate the size to pulse to
 	 */
 	public Oval (int insertionTime, int x, int y, int vx, int vy, int width, int height, Color colour, boolean isFilled,
-				 double pulseSize){
+				 double pulseSize, boolean doesPulse){
 		this( insertionTime,  x,  y,  vx,  vy,  width,  height, colour, isFilled);
 		this.pulseSize = pulseSize;
+		this.doesPulse = doesPulse;
 	}
 
 	/**

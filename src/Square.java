@@ -38,9 +38,10 @@ public class Square extends ClosedShape {
      * @param pulseSize The multiplier to calculate the size to pulse to
      */
     public Square(int insertionTime, int x, int y, int vx, int vy, int side, Color colour, boolean isFilled,
-                  double pulseSize) {
+                  double pulseSize, boolean doesPulse) {
         this(insertionTime, x, y, vx, vy, side, colour, isFilled);
         this.pulseSize = pulseSize;
+        this.doesPulse = doesPulse;
     }
     /**
      * @return The length of the sides of the square

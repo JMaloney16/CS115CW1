@@ -78,9 +78,10 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()) { //If the shape pulses
+			boolean doesPulse = line.nextBoolean();
 			double pulseSize = line.nextDouble();
 			line.close();
-			return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r, g, b), filled, pulseSize);
+			return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r, g, b), filled, pulseSize, doesPulse);
 		} else {
 			line.close();
 			return new Circle(insertionTime, px, py, vx, vy, diameter, Color.rgb(r, g, b), filled);
@@ -105,9 +106,10 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
+			boolean doesPulse = line.nextBoolean();
 			double pulseSize = line.nextDouble();
 			line.close();
-			return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize);
+			return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize, doesPulse);
 		}else {
 			line.close();
 			return new Oval(insertionTime, px, py, vx, vy, width, height, Color.rgb(r, g, b), filled);
@@ -131,9 +133,10 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
+			boolean doesPulse = line.nextBoolean();
 			double pulseSize = line.nextDouble();
 			line.close();
-			return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r,g,b), filled, pulseSize);
+			return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r,g,b), filled, pulseSize, doesPulse);
 		}else {
 			line.close();
 			return new Square(insertionTime, px, py, vx, vy, side, Color.rgb(r, g, b), filled);
@@ -158,9 +161,10 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
+			boolean doesPulse = line.nextBoolean();
 			double pulseSize = line.nextDouble();
 			line.close();
-			return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize);
+			return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r,g,b), filled, pulseSize, doesPulse);
 		}else {
 			line.close();
 			return new Rect(insertionTime, px, py, vx, vy, width, height, Color.rgb(r, g, b), filled);
@@ -188,10 +192,11 @@ public class ReadShapeFile {
 		int b = line.nextInt();
 		int insertionTime = line.nextInt();
 		if (line.hasNext()){
+			boolean doesPulse = line.nextBoolean();
 			double pulseSize = line.nextDouble();
 			line.close();
 			return new Arc(insertionTime, px, py, vx, vy, width, height, startAngle, arcExtent, closure,
-					Color.rgb(r, g, b), filled, pulseSize);
+					Color.rgb(r, g, b), filled, pulseSize, doesPulse);
 		} else {
 			line.close();
 			return new Arc(insertionTime, px, py, vx, vy, width, height, startAngle, arcExtent, closure,
@@ -214,9 +219,10 @@ public class ReadShapeFile {
 		Image insertImage = new Image(line.next());
 		int insertionTime = line.nextInt();
 		if (line.hasNext()) {
+			boolean doesPulse = line.nextBoolean();
 			double pulseSize = line.nextDouble();
 			line.close();
-			return new Img(insertionTime, px, py, vx, vy, width, height, insertImage, pulseSize);
+			return new Img(insertionTime, px, py, vx, vy, width, height, insertImage, pulseSize, doesPulse);
 		}else {
 			line.close();
 			return new Img(insertionTime, px, py, vx, vy, width, height, insertImage);
