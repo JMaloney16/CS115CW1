@@ -7,8 +7,8 @@
  *
  */
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
 
 import java.io.*;
 import java.util.Scanner;
@@ -47,13 +47,15 @@ public class ReadShapeFile {
 				case "arc":
 					shapeQueue.enqueue(createArc(line));
 					break;
+				case "image":
+					shapeQueue.enqueue(createImage(line));
+					break;
 				default:
 					System.out.println("Not a correct shape format!: " + shapeType);
 			}
 
 		}
 		in.close();
-		//Right now, returning an empty Queue.  You need to change this.
 		return shapeQueue;
 	}
 
@@ -196,6 +198,32 @@ public class ReadShapeFile {
 					Color.rgb(r, g, b), filled);
 		}
 	}
+
+	/**
+	 * Method to convert a string format image to an Img object
+	 * @param line Scanner with string input stream
+	 * @return Img object
+	 */
+	private static Img createImage(Scanner line){
+		int px = line.nextInt();
+		int py = line.nextInt();
+		int vx = line.nextInt();
+		int vy = line.nextInt();
+		int width = line.nextInt();
+		int height = line.nextInt();
+		Image insertImage = new Image(line.next());
+		int insertionTime = line.nextInt();
+		if (line.hasNext()) {
+			double pulseSize = line.nextDouble();
+			line.close();
+			return new Img(insertionTime, px, py, vx, vy, width, height, insertImage, pulseSize);
+		}else {
+			line.close();
+			return new Img(insertionTime, px, py, vx, vy, width, height, insertImage);
+		}
+	}
+
+
 	/**
 	 * Method to read the file and return a queue of shapes from this file. The
 	 * program should handle the file not found exception here and shut down the

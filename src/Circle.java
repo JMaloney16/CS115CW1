@@ -36,9 +36,12 @@ public class Circle extends ClosedShape {
     public Circle (int insertionTime, int x, int y, int vx, int vy, int diameter, Color colour, boolean isFilled) {
     	super (insertionTime, x, y, vx, vy, colour, isFilled);
     	this.diameter = diameter;
-    
     }
 
+	/**
+	 *
+	 * @param pulseSize The multiplier to calculate the size to pulse to
+	 */
 	public Circle (int insertionTime, int x, int y, int vx, int vy, int diameter, Color colour, boolean isFilled, double pulseSize) {
 		this(insertionTime, x, y, vx, vy, diameter, colour, isFilled);
 		this.pulseSize = pulseSize;

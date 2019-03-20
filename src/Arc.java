@@ -51,6 +51,10 @@ public class Arc extends ClosedShape {
         }
     }
 
+    /**
+     *
+     * @param pulseSize The multiplier to calculate the size to pulse to
+     */
     public Arc(int insertionTime, int x, int y, int vx, int vy, int width, int height, int startAngle, int arcExtent,
                String closure, Color colour, boolean isFilled, double pulseSize){
         this(insertionTime, x, y, vx, vy, width, height, startAngle, arcExtent, closure, colour, isFilled);

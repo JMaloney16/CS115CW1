@@ -1,0 +1,2 @@
+image 20 20 3 1 200 200 https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/DVD_logo.svg/1000px-DVD_logo.svg.png 0 2
+image 50 30 2 1 200 200 http://cs.swansea.ac.uk/~csdarchambault/DanNet.jpg 1000
