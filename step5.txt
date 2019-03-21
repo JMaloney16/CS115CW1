@@ -1,0 +1,5 @@
+image 20 20 3 1 200 200 https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/DVD_logo.svg/1000px-DVD_logo.svg.png 0 true 4
+rect 120 20 5 -1 false 80 50 255 0 255 0 true 3
+square 220 20 1 -2 true 50 0 0 0 0
+oval 320 20 3 3 false 50 80 80 80 80 0 true 4
+circle 120 120 5 0 true 70 0 255 0 2000

@@ -56,14 +56,34 @@ public class ClosedShape {
 	 */
 	private int insertionTime;
 
-	protected double pulseSize = 1;
+	/**
+	 * Boolean that determines whether a shape should pulse
+	 */
 	protected boolean doesPulse = false;
+	/**
+	 * The multiplier by which to calculate the size shapes should pulse to
+	 */
+	protected double pulseSize;
+	/**
+	 * Used to determine whether the shape needs to increase in size or shrink during pulsing
+	 */
 	protected boolean enlargement = false;
 
+	/**
+	 * The width the shape will pulse to
+	 */
 	protected double pulseWidth;
+	/**
+	 * The height the shape will pulse to
+	 */
 	protected double pulseHeight;
-
+	/**
+	 * The starting width of the shape, used to stop the shape from increasing or decreasing in size indefinitely
+	 */
 	protected int originalWidth;
+	/**
+	 * The starting height of the shape
+	 */
 	protected int originalHeight;
 
 	/**
@@ -274,6 +294,10 @@ public class ClosedShape {
 	 	return 1;
 	 }
 
+	/**
+	 * Set the height of the shape
+	 * @param newWidth Value to set the width to
+	 */
 	 public void setWidth(int newWidth){
          System.out.println("Must be overwritten!");
      }
@@ -287,62 +311,115 @@ public class ClosedShape {
 	 	return 1;
 	 }
 
+	/**
+	 * Set the height of the shape
+	 * @param newHeight Value to set height to
+	 */
 	 public void setHeight(int newHeight){
          System.out.println("Must be overwritten!");
      }
 
-	 public int getOriginalWidth() {
+	/**
+	 * @return The original width of the shape
+	 */
+	public int getOriginalWidth() {
 		return originalWidth;
 	 }
 
+	/**
+	 * Reset the original width of the shape
+	 * @param originalWidth New value of the originalWidth
+	 */
 	 public void setOriginalWidth(int originalWidth) {
 		this.originalWidth = originalWidth;
 	 }
 
-	 public int getOriginalHeight() {
+	/**
+	 * @return The original height of the shape
+	 */
+	public int getOriginalHeight() {
 		return originalHeight;
 	 }
 
+	/**
+	 * Reset the original height of the shape
+	 * @param originalHeight New value of the originalHeight
+	 */
 	 public void setOriginalHeight(int originalHeight) {
 		this.originalHeight = originalHeight;
      }
 
+	/**
+	 * @return The current value of the enlargement attribute
+	 */
     public boolean isEnlargement() {
         return enlargement;
     }
 
-    public void setEnlargement(boolean enlargement) {
+	/**
+	 * Reset the value of the enlargement attribute
+	 * @param enlargement New value of enlargment
+	 */
+	public void setEnlargement(boolean enlargement) {
         this.enlargement = enlargement;
     }
 
-    public double getPulseSize() {
+	/**
+	 * @return The multiplier used for calculating pulse sizes
+	 */
+	public double getPulseSize() {
         return pulseSize;
     }
 
-    public void setPulseSize(double pulseSize) {
+	/**
+	 * Reset the pulse multiplier
+	 * @param pulseSize The new value for the pulse multiplier
+	 */
+	public void setPulseSize(double pulseSize) {
         this.pulseSize = pulseSize;
     }
 
-    public double getPulseWidth() {
+	/**
+	 * @return The width the shape pulses to
+	 */
+	public double getPulseWidth() {
         return pulseWidth;
     }
 
-    public void setPulseWidth(double pulseWidth) {
+	/**
+	 * Reset the value of the width to pulse to
+	 * @param pulseWidth The new width to pulse to
+	 */
+	public void setPulseWidth(double pulseWidth) {
         this.pulseWidth = pulseWidth;
     }
 
+	/**
+	 * @return The height the shape pulses to
+	 */
     public double getPulseHeight() {
         return pulseHeight;
     }
 
-    public void setPulseHeight(double pulseHeight) {
+	/**
+	 * Reset the value of the height to pulse to
+	 * @param pulseHeight The new height to pulse to
+	 */
+	public void setPulseHeight(double pulseHeight) {
         this.pulseHeight = pulseHeight;
     }
 
+	/**
+	 * @return Whether the shape pulses or not
+	 */
 	public boolean isDoesPulse() {
 		return doesPulse;
 	}
 
+	/**
+	 * Reset the value of the doesPulse attribute
+	 * @param doesPulse New value to set doesPulse to
+	 */
 	public void setDoesPulse(boolean doesPulse) {
 		this.doesPulse = doesPulse;
 	}
